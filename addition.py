@@ -24,20 +24,16 @@ response = "run"
 score = 0
 while response != "quit":
     numbers_dict, correct = random_ab_int()
-    answers = list(numbers_dict.keys())
-    random.shuffle(answers)
-    answers_dict = {'a': answers[0], 'b': answers[1], 'c': answers[2], 'd': answers[3]}
-    correct_numbers = numbers_dict[correct]
+#   answers = list(numbers_dict.keys())
+#   random.shuffle(answers)
+#   answers_dict = {'a': answers[0], 'b': answers[1], 'c': answers[2], 'd': answers[3]}
+#   correct_numbers = numbers_dict[correct]
 
     os.system('clear')
     p(f"score = {score}\n\
     What is the sum of \n\
     {numbers_dict[correct][0]}\
     + {numbers_dict[correct][1]}\n\n\
-    a = {answers_dict['a']}\n\
-    b = {answers_dict['b']}\n\
-    c = {answers_dict['c']}\n\
-    d = {answers_dict['d']}\n\
     quit = quit")
 
     response = input()
@@ -45,7 +41,8 @@ while response != "quit":
         os.system('clear')
         p(f"Your score is {score}")
         break
-    if answers_dict[response] == correct:
+    #if answers_dict[response] == correct:
+    if int(response) == correct:
         os.system('clear')
         p('correct')
         score += 1
