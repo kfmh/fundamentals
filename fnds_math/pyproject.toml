@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fnds_math"
+version = "0.1.0"
+description = "Math game in shell"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+urls = {source = "https://github.com/undrwolf/fundamentals_math_app"}
+dependencies = [
+    "rich >= 13.5.2",
+]
+
+[project.scripts]
+fnds_math = "fnds_math.main:main"
