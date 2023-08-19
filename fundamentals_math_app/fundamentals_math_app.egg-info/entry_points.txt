@@ -1,2 +1,0 @@
-[console_scripts]
-start_math = fundamentals_math_app.main:main
