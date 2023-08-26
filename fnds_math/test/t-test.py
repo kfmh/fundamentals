@@ -1,31 +1,62 @@
-from textual import events
-from textual.app import App, ComposeResult
-from textual.widgets import Label, Button, Header, RichLog
+import os
+from rich.console import Console
+from rich.panel import Panel
+from addition import RandomABIntUpdater
+from time import sleep
 
-class Fnds_math(App[str]):
-    CSS_PATH = "math_app.css"
+updater = RandomABIntUpdater()
 
-    def on_mount(self) -> None:
-        self.screen.styles.background = 'gray'
+def clear_screen():
+    os.system('clear' if os.name == 'posix' else 'cls')
 
-    TITLE = "A Question App"
-    SUB_TITLE = "The most important question"
+def display_intro(console):
+    console.print(Panel("[bold cyan]Welcome to the Addition Quiz![/bold cyan]"))
+    console.print("Test your addition skills. Type [bold red]q[/bold red] anytime to quit.")
+    console.print(hr())
 
-    def compose(self) -> ComposeResult:
-        yield RichLog()
-        yield Header()
-        yield Label("Do you love Textual?", id="question")
-        yield Button("Yes", id="yes",  variant="primary")
-        yield Button("No", id="no", variant="error")
+def display_question(console, score, a, b):
+    clear_screen()
+    console.print(f"Score: [bold magenta]{score}[/bold magenta]\n")
+    console.print(f"What is the sum of\n\n[bold cyan]{a} + {b} = ?[/bold cyan]")
+    console.print("\nType [bold red]q[/bold red] to quit.")
 
-    def on_key(self, event: events.Key) -> None:
-        self.query_one(RichLog).write(event) 
+def hr():
+    return "-"*50
 
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        self.exit(event.button.id)
+def main():
+    response = "run"
+    score = 0
+    console = Console(force_terminal=True)
 
+    display_intro(console)
+    sleep(2)
 
-if __name__ == '__main__':
-    app = Fnds_math()
-    reply = app.run()
-    print(reply)
+    while response != "q":
+        correct, a, b = updater.update()
+
+        display_question(console, score, a, b)
+
+        response = input("> ")
+
+        if response == "q":
+            clear_screen()
+            console.print(Panel(f"Your final score is [bold green]{score}[/bold green]", expand=False))
+            break
+
+        try:
+            user_response = int(response)
+            if user_response == correct:
+                score += 1
+                console.print("[bold green]Correct! Well done![/bold green]\n")
+                console.print(hr())
+            else:
+                console.print(f"[bold red]Oops! That's incorrect. \n{a} + {b} = {correct}[/bold red]\n")
+                console.print(hr())
+                
+        except ValueError:
+            console.print("[bold yellow]Invalid input. Please enter a number or 'q' to quit.[/bold yellow]\n")
+            console.print(hr())
+        sleep(2)
+
+if __name__ == "__main__":
+    main()
