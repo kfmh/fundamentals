@@ -20,7 +20,12 @@ def display_intro(console):
         console (Console): Rich Console instance for printing formatted output.
     """
     console.print(Panel("[bold cyan]Welcome to the Addition Quiz![/bold cyan]"))
-    console.print("Test your addition skills. Type [bold red]q[/bold red] anytime to quit.")
+    console.print("Type [bold red]1 = Addision[/bold red]")
+    console.print("Type [bold red]2 = Play Doors[/bold red]")
+    console.print("Type [bold red]q[/bold red] anytime to quit.")
+    game_choice = input("> ")
+    return game_choice
+
 
 def display_question(console, score, a, b):
     """
@@ -37,19 +42,12 @@ def display_question(console, score, a, b):
     console.print(f"What is the sum of\n\n[bold cyan]{a} + {b} = ?[/bold cyan]")
     console.print("\nType [bold red]q[/bold red] to quit.")
 
-def main():
-    response = "run"
-    score = 0
-    console = Console(force_terminal=True)
+def doors():
+    print("Doors")
 
+def addision_game(score, response, console):
     timer = Avg_TTA()
-
     tracker = AnswerTracker()
-
-    clear_screen()
-    display_intro(console)
-    sleep(2)
-
 
     while response != "q":
         correct, a, b = updater.update()
@@ -80,10 +78,25 @@ def main():
 
         fraction = tracker.fraction_wrong_over_correct()
         if fraction is not None:
-            print(f"Fraction of wrong answers over correct answers: {fraction:.2f}")
+            print(f"Fraction of wrong answers over total answers: {fraction:.2f}")
         else:
             print("No correct answers recorded yet.")
-        sleep(2)
+        print(input("Press enter"))
+
+def main():
+    response = "run"
+    score = 0
+    console = Console(force_terminal=True)
+
+
+    clear_screen()
+    game_choice = display_intro(console)
+    if int(game_choice) == 1:
+        addision_game(score, response, console)
+    else: 
+        doors()
+
+
 
 if __name__ == "__main__":
     main()

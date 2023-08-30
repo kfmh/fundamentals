@@ -1,6 +1,7 @@
 import time
 from collections import deque
 
+# Average Time To Answer 
 class Avg_TTA:
     def __init__(self):
         self.start_time = None
@@ -50,6 +51,6 @@ class AnswerTracker:
         """
         if self.correct_count == 0:
             return None
-        return self.wrong_count / self.correct_count
+        return self.wrong_count / (self.correct_count + self.wrong_count)
 
 
