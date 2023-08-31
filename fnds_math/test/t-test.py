@@ -43,6 +43,27 @@ def display_question(console, score, a, b):
     console.print("\nType [bold red]q[/bold red] to quit.")
 
 def doors():
+# Countdown process
+    # import threading
+    # import time
+
+    # def countdown(seconds):
+    #     time.sleep(seconds)
+    #     print("\nCountdown finished!")
+
+    # # Start the countdown in a separate thread
+    # countdown_thread = threading.Thread(target=countdown, args=(10,))
+    # countdown_thread.start()
+
+    # # Foreground tasks
+    # for i in range(1, 6):
+    #     print(f"Foreground task: {i}")
+    #     time.sleep(1)
+
+    # # Wait for the countdown thread to finish
+    # countdown_thread.join()
+
+    while
     # Challenge 1: The Cipher Key (Caesar cipher)
     # Challenge 2: Steganographic Clue Hunt
     # Challenge 3: Logic Lock
