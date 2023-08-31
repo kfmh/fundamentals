@@ -43,6 +43,19 @@ def display_question(console, score, a, b):
     console.print("\nType [bold red]q[/bold red] to quit.")
 
 def doors():
+    # Challenge 1: The Cipher Key (Caesar cipher)
+    # Challenge 2: Steganographic Clue Hunt
+    # Challenge 3: Logic Lock
+    # Challenge 4: The Enigmatic Code
+    # Challenge 5: The Techno-Riddle
+    # Challenge 6: The Virtual Maze
+    # Challenge 7: The Multilayered Puzzle
+    # Challenge 8: The Decoding Relay
+    # Challenge 9: The Riddle of Reflection
+    # Challenge 10: The Collaborative Cipher Wheel
+    # Challenge 11: The Binary Quest
+    # Challenge 12: The Puzzle Marathon
+    # Challenge 13: The Grand Convergence
     print("Doors")
 
 def addision_game(score, response, console):
