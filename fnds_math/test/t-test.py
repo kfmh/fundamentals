@@ -63,11 +63,28 @@ def doors():
     # # Wait for the countdown thread to finish
     # countdown_thread.join()
 
-    while
+# ---------------
     # Challenge 1: The Cipher Key (Caesar cipher)
+    # Prime facotor a number and user the secons smallest prime as key to solv a Cecar cipher
+    # the responce of the scifer is a url that lead to next challange.
+
     # Challenge 2: Steganographic Clue Hunt
+    # message On this screen are 4 numbers, find them.
+    # 4 in the clue message, 
+    # 5 as the greek letter (V), 
+    # 10 the url as letters (ten), 
+    # 8 as a hidden in the visual as a woman tha just (eight) dinner.
+    # Sum up the numbers to get 27
+
     # Challenge 3: Logic Lock
+    # 1. Slipt the numer right down the middle
+    # 2. Write the two numbers in 4bit binary
+    # 3. What is the square root of the sum of all bits
+
     # Challenge 4: The Enigmatic Code
+    # Riddle = I am hidden in a cude of x. x = 2
+    # Crack another cecar cipher
+    
     # Challenge 5: The Techno-Riddle
     # Challenge 6: The Virtual Maze
     # Challenge 7: The Multilayered Puzzle
