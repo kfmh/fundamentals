@@ -48,7 +48,6 @@ class Cicada_13:
 
     def game_loop(self, clear_screen):
 
-        challenge = 0
         game_finished = False
         next_game = False
 
@@ -56,12 +55,24 @@ class Cicada_13:
             
             clear_screen()
 
-            if challenge == 0:
-                self.game_rules(clear_screen=clear_screen, next_game=next_game)
-            if challenge == 1:
-                self.leval_1()
+            self.game_rules(clear_screen=clear_screen, next_game=next_game)
+            self.leval_1()
+            self.leval_2()
+            self.leval_3()
+            self.leval_4()
+            self.leval_5()
+            self.leval_6()
+            self.leval_7()
+            self.leval_8()
+            self.leval_9()
+            self.leval_10()
+            self.leval_11()
+            self.leval_12()
+            self.leval_13()
+            game_finished = False
+
+
             
-            challenge += 1
 
     def game_rules(self, clear_screen, next_game):
         while next_game == False:
@@ -117,7 +128,7 @@ class Cicada_13:
         console.print(Panel("[bold cyan]Cipher text[/bold cyan]"))
         
 
-        decrypted_cipher = input("> ")
+        decrypted_cipher = input("Correct answer is: ")
         if decrypted_cipher == "test":
             """Open the specified URL in the default web browser."""
             url = "https://undrwolf.com/"
