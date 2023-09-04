@@ -1,9 +1,9 @@
 import './App.css';
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function LandingPage() {
-  return <h1></h1>;
+  return <></>;
 }
 
 function Challange() {
