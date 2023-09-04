@@ -1,9 +1,9 @@
 import './App.css';
 import React from "react";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function LandingPage() {
-  return <></>;
+  return <h1>Welcome to the Landing </h1>;
 }
 
 function Challange() {
@@ -14,6 +14,17 @@ function App() {
   return (
     <Router>
       <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/"></Link>
+            </li>
+            <li>
+              <Link to="/pastXse"></Link>
+            </li>
+          </ul>
+        </nav>
+
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/pastXse" element={<Challange/>} />
