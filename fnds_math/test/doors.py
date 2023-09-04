@@ -3,8 +3,40 @@ import time
 from rich.console import Console
 from rich.panel import Panel
 import webbrowser
+from time import sleep
+import pandas as pd
+from tabulate import tabulate
 
 console = Console(force_terminal=True)
+
+def answer(correct_response, response_type):
+    response = input("Enter command: ")
+    cr = correct_response
+    if response_type == "int":
+        response = int(response)
+    if response_type == "str":
+        response = response.upper()
+        cr = correct_response.upper()
+
+    if response == cr:
+        problem_solved = True
+        print("Correct")
+        sleep(2)
+    else: 
+        problem_solved = False
+
+    return problem_solved, response
+
+def show_clue(response, clue, clues):
+    if response == "?":
+        if clue < 4:
+            console.print(f"[bold red]{clues[clue]}[/bold red]")
+            console.print("[bold red]-1 minute[/bold red]")
+            clue += 1
+        else: 
+            console.print("[bold red]No more clues[/bold red]")
+            console.print("[bold red]-1 minute[/bold red]")
+    return clue
 
 class Countdonw_Threade:
     def __init__(self):
@@ -56,37 +88,46 @@ class Cicada_13:
             clear_screen()
 
             self.game_rules(clear_screen=clear_screen, next_game=next_game)
+            clear_screen()
             self.leval_1()
+            clear_screen()
             self.leval_2()
+            clear_screen()
             self.leval_3()
+            clear_screen()
             self.leval_4()
-            self.leval_5()
-            self.leval_6()
-            self.leval_7()
-            self.leval_8()
-            self.leval_9()
-            self.leval_10()
-            self.leval_11()
-            self.leval_12()
-            self.leval_13()
+            clear_screen()
+            # self.leval_5()
+            # clear_screen()
+            # self.leval_6()
+            # clear_screen()
+            # self.leval_7()
+            # clear_screen()
+            # self.leval_8()
+            # clear_screen()
+            # self.leval_9()
+            # clear_screen()
+            # self.leval_10()
+            # clear_screen()
+            # self.leval_11()
+            # clear_screen()
+            # self.leval_12()
+            # self.leval_13()
+            # clear_screen()
+            # endscreen
             game_finished = False
-
-
-            
 
     def game_rules(self, clear_screen, next_game):
         while next_game == False:
             clear_screen()
             console.print("[bold red]Game Rules[/bold red]")
-            console.print("- Each team starts with 130 points")
-            console.print("- Every minute 1 point is deducted")
-            console.print("- If you get stuck, each leval has 3 clues and each clue costas 1 point")
-            console.print("- Each clue costs 1 point")
+            console.print("- Each team starts with 130 minutes on their clock")
+            console.print("- If you get stuck, each leval has 3 clues and each clue costas 1 minute time reduction")
             console.print("- Every 5 min each player has to drink 5cl of beer")
-            console.print(Panel("[bold cyan]- The team with the most points left in the end wins[/bold cyan]"))
+            console.print(Panel("[bold cyan]- The team with the most time left in the end wins[/bold cyan]"))
 
-            console.print("\n[bold red]Game Controls[/bold red]")
-            console.print("Type the anserw to the challange, or desired game control and hit enter")
+            console.print("\n[bold red]Game Commands[/bold red]")
+            console.print("Type the anserw to the challange, or desired game command and hit enter")
             console.print("[[bold red]?[/bold red]] = Clue to current challenge")
             console.print("[[bold red]y[/bold red]] = Yes")
             console.print("[[bold red]n[/bold red]] = No")
@@ -116,45 +157,89 @@ class Cicada_13:
 
             if response == "y":
                 next_game = True
-
-            
-    
-
-    # Prime facotor a number and user the secons smallest prime as key to solv a Cecar cipher
-    # the responce of the scifer is a url that lead to next challange.
+         
+    # ----------------------------------------------------------------
     def leval_1(self):
-        console.print("[bold cyan]Challenge 1: The Cipher Key[/bold cyan]\n")
-        console.print("[bold red]Cipher key:[/bold red] \nSecond smallest prime that is a divisor to 231")
-        console.print(Panel("[bold cyan]Cipher text[/bold cyan]"))
-        
+        # Prime facotor a number and user the secons smallest prime as key to solv a Cecar cipher
+        # the responce of the scifer is a url that lead to next challange.
+        clue = 1
+        clues = {
+            1: "This is a Caesar Cipher, and it is one of the earliest and simplest methods of encryption technique",
+            2: "A Caesar Cipher is a type of substitution cipher",
+            3: "Each letter of a given text is replaced by a \nletter with a fixed number of positions down the alphabet",
+        }
 
-        decrypted_cipher = input("Correct answer is: ")
-        if decrypted_cipher == "test":
-            """Open the specified URL in the default web browser."""
-            url = "https://undrwolf.com/"
-            webbrowser.open(url)
+        problem_solved = False
+        console.print("[bold cyan]Challenge 1: The Cipher[/bold cyan]\n")
+        console.print("[bold red]Cipher key = [/bold red]Second smallest factor to 231")
+        console.print(Panel("[bold cyan]ITLM MXGLX[/bold cyan]"))
 
+        while problem_solved == False:
+            problem_solved, response = answer("PAST TENSE", "str")
+            clue = show_clue(response, clue, clues)
+            if response == "PAST TENSE":
+                """Open the specified URL in the default web browser."""
+                url = "https://cicada-game.netlify.app/pastXse"
+                webbrowser.open(url)
+
+    # ----------------------------------------------------------------
     def leval_2(self):
-        print('Challenge 2: Steganographic Clue Hunt')
-        # message On this screen are 4 numbers, find them.
-        # 4 in the clue message, 
-        # 5 as the greek letter (V), 
-        # 10 the url as letters (ten), 
-        # 8 as a hidden in the visual as a woman tha just (eight) dinner.
-        # Sum up the numbers to get 27
-    
-    def leval_3(self):
-        print('Challenge 3: Logic Lock')
-        # 1. Slipt the numer right down the middle (2, 7)
-        # 2. Write the two numbers in 4bit binary (2=0010, 7=0111)
-        # 3. what is the sum of 
+    # message On this screen are four numbers, find them.
+    # four in the clue message, 
+    # 5 as the greek letter (V), 
+    # 10 the url as letters (X), 
+    # 8 as a hidden in the visual as a woman that just (eight) dinner.
+    # Sum up the numbers to get 27
+        problem_solved = False
+        clue = 1    
+        clues = {
+            1: "text",
+            2: "two words two numerals",
+            3: "What did she just do that left an empty plate behinde?",
+        }
 
+        print('Challenge 2: Steganographic Clue Hunt\n')
+        print("What is the sum of all four integers you found")
+
+
+        while problem_solved == False:
+            problem_solved, response = answer(27, "int")
+            clue = show_clue(response, clue, clues)
+    
+    # ----------------------------------------------------------------
+    def leval_3(self):
+        problem_solved = False
+        print('Challenge 3: Logic Lock\n')
+        console.print("[bold red]Find the key to move on[/bold red]")
+
+        while problem_solved == False:
+            # 1. Splt the numer right down the middle (2, 7)
+            console.print("[bold red]Logic 1[/bold red] \nSplit the number right down the middle")
+            # 2. Write the two numbers in 4bit binary (2=0010, 7=0111)
+            console.print("[bold red]Logic 2[/bold red] \nWrite the two numbers in 4bit binary")
+            # 3. what is the sum of (4)
+            console.print("[bold red]Logic 3[/bold red] \nWhat is the squareroot of the sum of all bits")
+            # 
+            console.print("[bold red]Riddle = [/bold red]next key is hidden in the cube")
+            problem_solved = answer(2, "int")
+
+    # ----------------------------------------------------------------
     def leval_4(self):
-        print('Challenge 4: The Enigmatic Code')
         # Riddle = I am hidden in a cube of x. x^3 = 8
         # Crack another Cecar cipher with 8 as key
         # Answer = Vigenère. 
         # Button (Who am I) that only triggers a google searsh if the write message is decrypted.       
+        problem_solved = False
+        while problem_solved == False:
+            print('Challenge 4: The Enigmatic Code')
+
+
+            vigenere_table = pd.read_csv("vigenere_table.csv")
+            print("\n\n")
+            print(vigenere_table)
+            print("\n\n")
+            problem_solved = answer("vigenère", "str")
+
 
     def leval_5(self):
         pass
