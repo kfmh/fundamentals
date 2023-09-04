@@ -17,10 +17,10 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/"></Link>
+              <Link to="/">t</Link>
             </li>
             <li>
-              <Link to="/pastXse"></Link>
+              <Link to="/pastXse">test</Link>
             </li>
           </ul>
         </nav>
