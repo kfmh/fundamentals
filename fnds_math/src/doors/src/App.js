@@ -1,34 +1,27 @@
+import './App.css';
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function LandingPage() {
-  return <h1>Welcome to the Landing Page!</h1>;
+  return <h1></h1>;
 }
 
-function TestPage() {
-  return <h1>This is the Test Page</h1>;
+function Challange() {
+  return <div className="full-bg"></div>
 }
 
 function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Landing Page</Link>
-            </li>
-            <li>
-              <Link to="/test">Test Page</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/test" component={TestPage} />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/pastXse" element={<Challange/>} />
+        </Routes>
       </div>
     </Router>
   );
 }
+
 
 export default App;
