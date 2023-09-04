@@ -22,10 +22,10 @@ function App() {
         <div style={{position: "fixed", zIndex:"0"}}>
           <ul>
             <li>
-              <Link to="/"></Link>
+              <Link to="/">t</Link>
             </li>
             <li>
-              <Link to="/pastXse"></Link>
+              <Link to="/pastXse">t</Link>
             </li>
           </ul>
         </div>
