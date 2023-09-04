@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function LandingPage() {
-  return <h1>Welcome to the Landing </h1>;
+  return <h1>nothing here</h1>;
 }
 
 function Challange() {
@@ -13,22 +13,22 @@ function Challange() {
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">t</Link>
-            </li>
-            <li>
-              <Link to="/pastXse">test</Link>
-            </li>
-          </ul>
-        </nav>
 
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/pastXse" element={<Challange/>} />
         </Routes>
+      <div>
+        <div style={{position: "fixed", zIndex:"0"}}>
+          <ul>
+            <li>
+              <Link to="/"></Link>
+            </li>
+            <li>
+              <Link to="/pastXse"></Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </Router>
   );

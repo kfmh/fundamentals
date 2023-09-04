@@ -3,11 +3,6 @@ body {
   color: aliceblue;
 }
 
-nav {
-  display: none;
-}
-
-
 
 .full-bg {
   /* Adjust the content to fill the viewport */
@@ -24,4 +19,7 @@ nav {
   
   /* In case the image doesn't cover the entire viewport */
   background-repeat: no-repeat;
+
+  background-position: top;
+  z-index: 10;
 }
