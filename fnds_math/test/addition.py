@@ -1,5 +1,5 @@
 import random
-from timer_ import Avg_TTA, AnswerTracker  # Importing the necessary modules and classes
+from fnds_functionality import Avg_TTA, AnswerTracker  # Importing the necessary modules and classes
 
 class Addision_game:
     """

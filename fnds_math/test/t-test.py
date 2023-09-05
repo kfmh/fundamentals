@@ -28,7 +28,7 @@ def main():
     if int(select_game) == 1:
         game_instance.game_loop(score=score, Panel=Panel, clear_screen=clear_screen, console=console)
     if int(select_game) == 2:
-        cicada_instance.game_loop(clear_screen=clear_screen) 
+        cicada_instance.game_loop() 
 
 
 if __name__ == "__main__":

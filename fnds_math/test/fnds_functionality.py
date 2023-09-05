@@ -1,5 +1,6 @@
 import time
 from collections import deque
+import os
 
 # Average Time To Answer 
 class Avg_TTA:
@@ -31,7 +32,7 @@ class Avg_TTA:
         console.print(f"\n[bold blue]Time taken to answer: {elapsed_time:.2f} seconds.[/bold blue]")
         console.print(f"[bold blue]Average time over last 5 answers: {avg_time:.2f} seconds.[/bold blue]\n")
 
-
+# Answer tracking
 class AnswerTracker:
     def __init__(self):
         self.correct_count = 0
@@ -54,3 +55,15 @@ class AnswerTracker:
         return self.wrong_count / (self.correct_count + self.wrong_count)
 
 
+class ScreenManager:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def clear_screen():
+        """Clears the terminal screen."""
+        # Check if OS is POSIX compliant (e.g., Linux, macOS)
+        if os.name == 'posix':
+            print("\033c", end="")  # ANSI escape sequence to clear screen
+        else:
+            os.system('cls')  # Windows command to clear screen
