@@ -327,7 +327,7 @@ class Cicada_13:
         # find document in garden
         pass
     def leval_13(self):
-        # Solv dokument
+        # Solv dokument with somehting that relefct all the previous challenges
         pass
 
 
