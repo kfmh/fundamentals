@@ -5,7 +5,7 @@ from rich import pretty
 pretty.install()
 from rich.traceback import install
 install()
-from addition import RandomABIntUpdater
+from .addition import RandomABIntUpdater
 
 updater = RandomABIntUpdater()
 
