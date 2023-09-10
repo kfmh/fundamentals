@@ -21,7 +21,7 @@ def player_input(correct_response, response_type, clue, clues, input_text="Enter
         if response_type == "int":
             response = int(response)
         if response_type == "str":
-            response = response.upper()
+            response = str(response).upper()
             cr = correct_response.upper()
 
     if response == cr:
@@ -94,32 +94,32 @@ class Cicada_13:
             manager.clear_screen()
 
             self.game_rules(next_game=next_game)
-            # manager.clear_screen()
-            # last_challange = self.leval_1()
-            # manager.clear_screen()
-            # last_challange = self.leval_2(last_challange)
-            # manager.clear_screen()
-            # last_challange = self.leval_3(last_challange)
             manager.clear_screen()
-            self.leval_4(2)
+            last_challange = self.leval_1()
             manager.clear_screen()
-            # self.leval_5()
-            # manager.clear_screen()
-            # self.leval_6()
-            # manager.clear_screen()
-            # self.leval_7()
-            # manager.clear_screen()
-            # self.leval_8()
-            # manager.clear_screen()
-            # self.leval_9()
-            # manager.clear_screen()
-            # self.leval_10()
-            # manager.clear_screen()
-            # self.leval_11()
-            # manager.clear_screen()
-            # self.leval_12()
-            # self.leval_13()
-            # manager.clear_screen()
+            last_challange = self.leval_2(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_3(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_4(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_5(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_6(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_7(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_8(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_9(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_10(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_11(last_challange)
+            manager.clear_screen()
+            last_challange = self.leval_12(last_challange)
+            self.leval_13(last_challange)
+            manager.clear_screen()
             # endscreen
             game_finished = False
 
@@ -182,7 +182,7 @@ class Cicada_13:
         console.print(Panel("[bold cyan]ITLM MXGLX[/bold cyan]"))
 
         while problem_solved == False:
-            problem_solved, response = player_input("PAST TENSE", "str")
+            problem_solved, response, clue = player_input("PAST TENSE", "str", "clue", "clues")
             clue = show_clue(response, clue, clues)
             if response == "PAST TENSE":
                 """Open the specified URL in the default web browser."""
@@ -212,7 +212,7 @@ class Cicada_13:
 
 
         while problem_solved == False:
-            problem_solved, response = player_input(27, "int")
+            problem_solved, response, clue = player_input(27, "int", "clue", "clues")
             clue = show_clue(response, clue, clues)
             if problem_solved:
                 return response
@@ -238,24 +238,24 @@ class Cicada_13:
             v1, v2 = None, None
             commands = ["x", "?", "y", "n"]
             while v1 == None or v1 in commands:
-                xx, v1 = player_input("xx", "int", 1, clues, "value1: ")
+                _ , v1, zz = player_input("xx", "int", 1, clues, "value1: ")
             while v2 == None or v2 in commands:
-                xx, v2 = player_input("xx", "int", 1, clues, "value2: ")
+                _ , v2, zz = player_input("xx", "int", 1, clues, "value2: ")
 
             # 2. Write the two numbers in 4bit binary (2=0010, 7=0111)
             console.print(f"\n[bold red]Logic 2[/bold red] \nWrite {v1} and {v2} respectively in 4bit binary")
             binary1, binary2 = None, None
             while binary1 == None or binary1 in commands:
-                xx, binary1 = player_input("xx", "str", 2, clues, f"{v1} = ")
+                _, binary1, _ = player_input("xx", "str", 2, clues, f"{v1} = ")
             while binary2 == None or binary2 in commands:
-                xx, binary2 = player_input("xx", "str", 2, clues, f"{v2} = ")
+                _ , binary2, zz = player_input("xx", "str", 2, clues, f"{v2} = ")
 
             # 3. what is the sum of (4)
             console.print(f"\n[bold red]Logic 3[/bold red] \nAdd up the Hamming weights of {binary1} and {binary2}, and then devide the sum by its square root")
 
             response = None
             while response == None or response in commands:
-                problem_solved, response = player_input(2, "int", 3, clues, "Answer: ")
+                problem_solved, response, clue = player_input(2, "int", 3, clues, "Answer: ")
 
             if problem_solved:
                 return response
@@ -300,47 +300,34 @@ class Cicada_13:
             print("\n\n")
             print(vigenere_table)
             print("\n\n")
-            problem_solved = player_input("vigenère", "str")
+            problem_solved, response, clue = player_input("vigenère", "str", clue, clues)
 
             # Return riddle
 
-    def leval_6(self):
+    def leval_6(self, last_challange):
         # solvation to riddle = "bockshelf"
         pass
-    def leval_7(self):
+    def leval_7(self, last_challange):
         # solv math problem to get cordinats in booksshelf, to find envelope
         pass
-    def leval_8(self):
+    def leval_8(self, last_challange):
         # In envelope is USB, decrupt password to open usb
         pass
-    def leval_9(self):
+    def leval_9(self, last_challange):
         # in usb run program and crash program to get [row, colmn] in bookshelf to find phone
         pass
-    def leval_10(self):
+    def leval_10(self, last_challange):
         # passcode to phone is product of coordinats for usb and phone shelf
         pass
-    def leval_11(self):
+    def leval_11(self, last_challange):
         # find map inside phone
         pass
-    def leval_12(self):
+    def leval_12(self, last_challange):
         # find document in garden
         pass
-    def leval_13(self):
+    def leval_13(self, last_challange):
         # Solv dokument with somehting that relefct all the previous challenges
         pass
 
 
     # ---------------
-
-        # Challenge 5: The Techno-Riddle
-
-        # Challenge 6: The Virtual Maze
-        # Challenge 7: The Multilayered Puzzle
-        # Challenge 8: The Decoding Relay
-        # Challenge 9: The Riddle of Reflection
-        # Challenge 10: The Collaborative Cipher Wheel
-        # Challenge 11: The Binary Quest
-        # Challenge 12: The Puzzle Marathon
-        # Challenge 13: The Grand Convergence
-
-            
