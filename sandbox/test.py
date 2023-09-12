@@ -1,6 +1,5 @@
-# Importing required libraries
-from sympy import *
+for i in range(10):
+    print(i)
 
-
-# Rational(3/4)
-sqrt(7)
+for i in range(1,5):
+    print(1)

@@ -6,17 +6,35 @@ import webbrowser
 from time import sleep
 import pandas as pd
 from general_resource.fnds_functionality import ScreenManager
+import json
+import os
 
-console = Console(force_terminal=True)
+# Get the directory containing the current script (doors.py)
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to clues.json and gmae_menu.json in that directory
+clues_path = os.path.join(script_directory, 'clues.json')
+with open(clues_path, 'r') as infile:
+    clues = json.load(infile)
+
+game_menu_path = os.path.join(script_directory, 'game_menu.json')
+with open(game_menu_path, 'r') as infile:
+    game_menu = json.load(infile)
+
+
 manager = ScreenManager()
+console = Console(force_terminal=True)
 
+def c_print(print_text):
 
-def player_input(correct_response, response_type, clue, clues, input_text="Enter Command: "):
+    console.print(print_text)
+
+def player_input(correct_response, response_type, clue, level, input_text="Enter Command: "):
     response = input(input_text)
     cr = correct_response
 
     if response in ["x", "?", "y", "n"]:
-        clue = show_clue(response, clue, clues)
+        clue = show_clue(response, clue, level)
     elif response != "?":
         if response_type == "int":
             response = int(response)
@@ -33,16 +51,18 @@ def player_input(correct_response, response_type, clue, clues, input_text="Enter
 
     return problem_solved, response, clue
 
-def show_clue(response, clue, clues):
+def show_clue(response, clue, level):
+    clue_text = clues[level][clue]
+    clue = int(clue)
     if response == "?":
         if clue < 4:
-            console.print(f"[bold red]{clues[clue]}[/bold red]")
+            console.print(f"[bold red]{clue_text}[/bold red]")
             console.print("[bold red]-1 minute[/bold red]")
             clue += 1
         else: 
             console.print("[bold red]No more clues[/bold red]")
             console.print("[bold red]-1 minute[/bold red]")
-    return clue
+    return str(clue)
 
 class Countdonw_Threade:
     def __init__(self):
@@ -83,9 +103,8 @@ class Countdonw_Threade:
 class Cicada_13:
     def __init__(self) -> None:
         pass
-
+ 
     def game_loop(self):
-
         game_finished = False
         next_game = False
 
@@ -95,30 +114,30 @@ class Cicada_13:
 
             self.game_rules(next_game=next_game)
             manager.clear_screen()
-            last_challange = self.leval_1()
+            last_challange = self.level_1()
             manager.clear_screen()
-            last_challange = self.leval_2(last_challange)
+            last_challange = self.level_2(last_challange)
             manager.clear_screen()
-            last_challange = self.leval_3(last_challange)
+            last_challange = self.level_3(last_challange)
             manager.clear_screen()
-            last_challange = self.leval_4(last_challange)
+            last_challange = self.level_4(last_challange)
             manager.clear_screen()
-            last_challange = self.leval_5(last_challange)
+            last_challange = self.level_5(last_challange)
             manager.clear_screen()
-            last_challange = self.leval_6(last_challange)
-            manager.clear_screen()
-            last_challange = self.leval_7(last_challange)
-            manager.clear_screen()
-            last_challange = self.leval_8(last_challange)
-            manager.clear_screen()
-            last_challange = self.leval_9(last_challange)
-            manager.clear_screen()
-            last_challange = self.leval_10(last_challange)
-            manager.clear_screen()
-            last_challange = self.leval_11(last_challange)
-            manager.clear_screen()
-            last_challange = self.leval_12(last_challange)
-            self.leval_13(last_challange)
+            # last_challange = self.level_6(last_challange)
+            # manager.clear_screen()
+            # last_challange = self.level_7(last_challange)
+            # manager.clear_screen()
+            # last_challange = self.level_8(last_challange)
+            # manager.clear_screen()
+            # last_challange = self.level_9(last_challange)
+            # manager.clear_screen()
+            # last_challange = self.level_10(last_challange)
+            # manager.clear_scre41jen()
+            # last_challange = self.level_11(last_challange)
+            # manager.clear_screen()
+            # last_challange = self.level_12(last_challange)
+            # self.level_13(last_challange)
             manager.clear_screen()
             # endscreen
             game_finished = False
@@ -126,18 +145,21 @@ class Cicada_13:
     def game_rules(self, next_game):
         while next_game == False:
             manager.clear_screen()
-            console.print("[bold red]Game Rules[/bold red]")
-            console.print("- Each team starts with 130 minutes on their clock")
-            console.print("- If you get stuck, each leval has 3 clues and each clue costas 1 minute time reduction")
-            console.print("- Every 5 min each player has to drink 5cl of beer")
-            console.print(Panel("[bold cyan]- The team with the most time left in the end wins[/bold cyan]"))
+            for i in game_menu["information"]:
+                c_print(game_menu["information"][i])
+                
+            # console.print("[bold red]Game Rules[/bold red]")
+            # console.print("- Each team starts with 130 minutes on their clock")
+            # console.print("- If you get stuck, each level has 3 clues and each clue costas 1 minute time reduction")
+            # console.print("- Every 5 min each player has to drink 5cl of beer")
+            # console.print(Panel("[bold cyan]- The team with the most time left in the end wins[/bold cyan]"))
 
-            console.print("\n[bold red]Game Commands[/bold red]")
-            console.print("Type the anserw to the challange, or desired game command and hit enter")
-            console.print("[[bold red]?[/bold red]] = Clue to current challenge")
-            console.print("[[bold red]x[/bold red]] = Restart challenge")
-            console.print("[[bold red]y[/bold red]] = Yes")
-            console.print("[[bold red]n[/bold red]] = No")
+            # console.print("\n[bold red]Game Commands[/bold red]")
+            # console.print("Type the anserw to the challange, or desired game command and hit enter")
+            # console.print("[[bold red]?[/bold red]] = Clue to current challenge")
+            # console.print("[[bold red]x[/bold red]] = Restart challenge")
+            # console.print("[[bold red]y[/bold red]] = Yes")
+            # console.print("[[bold red]n[/bold red]] = No")
 
             response = input("> ")
             if response == "n":
@@ -153,7 +175,7 @@ class Cicada_13:
 
             if response == "?":
                 manager.clear_screen()
-                console.print("[bold red]This leval has no clues[/bold red]")
+                console.print("[bold red]This level has no clues[/bold red]")
                 console.print("[[bold red]1[/bold red]] = Start Game")
                 console.print("[[bold red]2[/bold red]] = See menu again")
                 response = input("> ")
@@ -166,24 +188,19 @@ class Cicada_13:
                 next_game = True
          
     # ----------------------------------------------------------------
-    def leval_1(self):
+    def level_1(self):
         # Prime facotor a number and user the secons smallest prime as key to solv a Cecar cipher
         # the responce of the scifer is a url that lead to next challange.
-        clue = 1
-        clues = {
-            1: "This is a Caesar Cipher, and it is one of the earliest and simplest methods of encryption technique",
-            2: "A Caesar Cipher is a type of substitution cipher",
-            3: "Each letter of a given text is replaced by a \nletter with a fixed number of positions down the alphabet",
-        }
-
+        clue, level = "1", "level_1"
         problem_solved = False
+
         console.print("[bold cyan]Challenge 1: The Cipher[/bold cyan]\n")
         console.print("[bold red]Cipher key = [/bold red]Second smallest factor to 231")
         console.print(Panel("[bold cyan]ITLM MXGLX[/bold cyan]"))
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("PAST TENSE", "str", "clue", "clues")
-            clue = show_clue(response, clue, clues)
+            problem_solved, response, clue = player_input("PAST TENSE", "str", clue, level)
+            clue = show_clue(response, clue, level)
             if response == "PAST TENSE":
                 """Open the specified URL in the default web browser."""
                 url = "https://cicada-game.netlify.app/womanfinishedeating"
@@ -191,7 +208,7 @@ class Cicada_13:
                 return response
 
     # ----------------------------------------------------------------
-    def leval_2(self, last_challange):
+    def level_2(self, last_challange):
     # message On this screen are four numbers, find them.
     # four in the clue message, 
     # 5 as the greek letter (V), 
@@ -199,33 +216,22 @@ class Cicada_13:
     # 8 as a hidden in the visual as a woman that just (eight) dinner.
     # Sum up the numbers to get 27
         problem_solved = False
-        clue = 1    
-        clues = {
-            1: "text",
-            2: "two words, two numerals",
-            3: "What activity did she partake in that gave the result of an empty plate?",
-        }
-
+        clue, level = "1", "level_2"
         print(f'Last challenge: {last_challange}\n')
         console.print(f'Challenge 2: Steganographic\n')
         print("What is the sum of all four integers you found")
 
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input(27, "int", "clue", "clues")
+            problem_solved, response, clue = player_input(27, "int", clue, level)
             clue = show_clue(response, clue, clues)
             if problem_solved:
                 return response
     
     # ----------------------------------------------------------------
-    def leval_3(self, last_challange):
-        clues = {
-            1: "Use a literal interpretation",
-            2: "When all 4bits are ON  (1 1 1 1 = 2^3 + 2^2 + 2^1 + 2^0)\nWhen all 4bits are OFF (0 0 0 0 = 0 + 0 + 0 + 0",
-            3: "Hamming weights are the number of bits that are turned ON in a binary string",
-        }
-
+    def level_3(self, last_challange):     
         problem_solved = False
+        clue, level = "1", "level_3"
 
         while problem_solved == False:
             manager.clear_screen()
@@ -238,17 +244,18 @@ class Cicada_13:
             v1, v2 = None, None
             commands = ["x", "?", "y", "n"]
             while v1 == None or v1 in commands:
-                _ , v1, zz = player_input("xx", "int", 1, clues, "value1: ")
+                _ , v1, zz = player_input("xx", "int", clue, level, "value1: ")
             while v2 == None or v2 in commands:
-                _ , v2, zz = player_input("xx", "int", 1, clues, "value2: ")
+                _ , v2, zz = player_input("xx", "int", clue, level, "value2: ")
 
             # 2. Write the two numbers in 4bit binary (2=0010, 7=0111)
             console.print(f"\n[bold red]Logic 2[/bold red] \nWrite {v1} and {v2} respectively in 4bit binary")
             binary1, binary2 = None, None
             while binary1 == None or binary1 in commands:
-                _, binary1, _ = player_input("xx", "str", 2, clues, f"{v1} = ")
+                _, binary1, _   = player_input("xx", "str", "2", level, f"{v1} = ")
+
             while binary2 == None or binary2 in commands:
-                _ , binary2, zz = player_input("xx", "str", 2, clues, f"{v2} = ")
+                _ , binary2, zz = player_input("xx", "str", "2", level, f"{v2} = ")
 
             # 3. what is the sum of (4)
             console.print(f"\n[bold red]Logic 3[/bold red] \nAdd up the Hamming weights of {binary1} and {binary2}, and then devide the sum by its square root")
@@ -265,7 +272,7 @@ class Cicada_13:
 
 
     # ----------------------------------------------------------------
-    def leval_4(self, last_challange):
+    def level_4(self, last_challange):
         # Riddle = Find a key, locked in a cube, say my name 
         # Crack another Cecar cipher with 8 as key
         # player_input = Vigenère. 
@@ -274,25 +281,20 @@ class Cicada_13:
         print('Challenge 4: Rail Fence Cipher')
         console.print(Panel("[bold cyan]VGNR IEEE[/bold cyan]"))
 
-        clue = 1    
+        clue, level = "1", "level_4"
         problem_solved = False
 
         while problem_solved == False:
-            clues = {
-                1: "Rail Fence Cipher is an encryption method zig-zaging letters between rails",
-                2: "The key to a Rail Fence Cipher is the number of rails you need to use",
-                3: "|Alternate letters| with 3 rails \n|-A-------R-------E-------T-------|\n|---L---E---N---T---L---T---E---S-|\n|-----T-------A-------E-------R---|\nARET LENTLTES TAER",
-            }
-
             problem_solved, response, clue = player_input("vigenere", "str", clue, clues)
             if problem_solved:
                 return response
 
 
-    def leval_5(self, last_challange):
+    def level_5(self, last_challange):
         print(f'Last challenge: {last_challange} -- Commands: [?]=Clue, [x]=Restart challenge\n')
         print('Challenge 5: ')
 
+        clue, level = 1, 1    
         while problem_solved == False:
 
 
@@ -304,30 +306,29 @@ class Cicada_13:
 
             # Return riddle
 
-    def leval_6(self, last_challange):
-        # solvation to riddle = "bockshelf"
-        pass
-    def leval_7(self, last_challange):
-        # solv math problem to get cordinats in booksshelf, to find envelope
-        pass
-    def leval_8(self, last_challange):
-        # In envelope is USB, decrupt password to open usb
-        pass
-    def leval_9(self, last_challange):
-        # in usb run program and crash program to get [row, colmn] in bookshelf to find phone
-        pass
-    def leval_10(self, last_challange):
-        # passcode to phone is product of coordinats for usb and phone shelf
-        pass
-    def leval_11(self, last_challange):
-        # find map inside phone
-        pass
-    def leval_12(self, last_challange):
-        # find document in garden
-        pass
-    def leval_13(self, last_challange):
-        # Solv dokument with somehting that relefct all the previous challenges
-        pass
+    # def level_6(self, last_challange):
+        # solvation to riddle = "bookshelf"
+    # def level_7(self, last_challange):
+    #     # solv math problem to get cordinats in booksshelf, to find envelope
+    #     pass
+    # def level_8(self, last_challange):
+    #     # In envelope is USB, decrupt password to open usb
+    #     pass
+    # def level_9(self, last_challange):
+    #     # in usb run program and crash program to get [row, colmn] in bookshelf to find phone
+    #     pass
+    # def level_10(self, last_challange):
+    #     # passcode to phone is product of coordinats for usb and phone shelf
+    #     pass
+    # def level_11(self, last_challange):
+    #     # find map inside phone
+    #     pass
+    # def level_12(self, last_challange):
+    #     # find document in garden
+    #     pass
+    # def level_13(self, last_challange):
+    #     # Solv dokument with somehting that relefct all the previous challenges
+    #     pass
 
 
     # ---------------
