@@ -27,6 +27,7 @@ with open(level_instructions_path, 'r') as infile:
 
 csv_path = os.path.join(script_directory, "vigenere_table.csv")
 vigenere_table = pd.read_csv(csv_path)
+vigenere_table.index = vigenere_table.index + 1
 
 manager = ScreenManager()
 console = Console(force_terminal=True)
@@ -131,8 +132,8 @@ class Cicada_13:
             
             manager.clear_screen()
 
-            self.game_rules(next_game=next_game)
-            manager.clear_screen()
+            # self.game_rules(next_game=next_game)
+            # manager.clear_screen()
             # last_challange = self.level_1()
             # manager.clear_screen()
             # last_challange = self.level_2(last_challange)
@@ -140,7 +141,7 @@ class Cicada_13:
             # last_challange = self.level_3(last_challange)
             # manager.clear_screen()
             # last_challange = self.level_4(last_challange)
-            # manager.clear_screen()
+            manager.clear_screen()
             last_challange = self.level_5("bookshelf")
             manager.clear_screen()
             last_challange = self.level_6(last_challange)
@@ -193,7 +194,7 @@ class Cicada_13:
             if response == "y":
                 next_game = True
          
-    # Level 1----------------------------------------------------------------
+    # ---------- Level 1: The Cipher           
     def level_1(self):
         # Prime facotor a number and user the secons smallest prime as key to solv a Cecar cipher
         # the responce of the scifer is a url that lead to next challange.
@@ -211,8 +212,7 @@ class Cicada_13:
                 webbrowser.open(url)
                 return response
 
-
-    # Level 2----------------------------------------------------------------
+    # ---------- Level 2: Steganographic
     def level_2(self, last_challange):
     # message On this screen are four numbers, find them.
     # four in the clue message, 
@@ -230,7 +230,7 @@ class Cicada_13:
             if problem_solved:
                 return response
     
-    # Level 3----------------------------------------------------------------
+    # ---------- Level 3: Logic Lock Find the key to move on
     def level_3(self, last_challange):     
         problem_solved = False
         clue, level = "1", "level_3"
@@ -245,9 +245,9 @@ class Cicada_13:
             v1, v2 = None, None
             commands = ["x", "?", "y", "n"]
             while v1 == None or v1 in commands:
-                _ , v1, zz = player_input("xx", "int", clue, level, "value1: ")
+                _ , v1, zz = player_input("xx", "int", clue, level, "1st value: ")
             while v2 == None or v2 in commands:
-                _ , v2, zz = player_input("xx", "int", clue, level, "value2: ")
+                _ , v2, zz = player_input("xx", "int", clue, level, "2nd value: ")
 
             # 2. Write the two numbers in 4bit binary (2=0010, 7=0111)
             console.print(f"\n[bold red]Logic 2[/bold red] \nWrite {v1} and {v2} respectively in 4bit binary")
@@ -271,7 +271,7 @@ class Cicada_13:
                 console.print(f"\n[bold red]-----------INCORRECT TRY AGAIN-----------[/bold red]")
                 sleep(1.5)
 
-    # Level 4----------------------------------------------------------------
+    # ---------- Level 4: Rail Fence Cipher
     def level_4(self, last_challange):
 
         clue, level = "1", "level_4"
@@ -279,51 +279,148 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("bookshelf", "str", clue, level)
+            problem_solved, response, clue = player_input("bookshelf", "str", clue, level, "Answer: ")
             if problem_solved:
                 return response
-
-    # Level 5----------------------------------------------------------------
+    # ---------- Level 5: Vigenère Cipher 0.1
     def level_5(self, last_challange):
-
         clue, level = "1", "level_5"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+        print("\n\n")
+        print(vigenere_table)
+        print("\n\n")
+
+        while problem_solved == False:
+            # R-two-C-one-press-alert
+            problem_solved, response, clue = player_input("04", "str", clue, level, "DD.XX.XXXX: ")
+            if problem_solved:
+                return response
+            # Find Walky talkie -> alert leads to phone
+
+# ---------------------------------------------------------------- GOOD TEST
+    # ---------- Level 6: Passcode <04>
+    def level_6(self, last_challange):
+        clue, level = "1", "level_6"    
         problem_solved = False
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
+            problem_solved, response, clue = player_input("venture", "str", clue, level, "what am i: ")
+            if problem_solved:
+                return response
+            # railway cipher -> Passcode -> riddle -> key
+        
+    # ---------- Level 7: Playfair Cipher <>
+    def level_7(self, last_challange):
+        clue, level = "1", "level_7"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("", "str", clue, level, "Answer: ")
+            if problem_solved:
+                return response
+            # sipher key -> cordinets -> bookword -> cipher key
 
-            
-            print("\n\n")
-            print(vigenere_table)
-            print("\n\n")
-            problem_solved, response, clue = player_input("R:ONE, C:TWO", "str", clue, clues)
+    # ---------- Level 8: Vigenère Cipher 0.2 <bookword>
+    def level_8(self, last_challange):
+    # Leads to new book with map and key on back <Three!>
+        clue, level = "1", "level_8"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
-            # Return riddle
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("6", "int", clue, level, "Answer: ")
+            if problem_solved:
+                return response
+        
+    # ---------- Level 9:  Cicar_cypher
+    def level_9(self, last_challange):
+    # Cicar_cypher Row column book page line word <binary>
+        clue, level = "1", "level_9"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
-    # def level_6(self, last_challange):
-        # solvation to riddle = "bookshelf"
-    # def level_7(self, last_challange):
-    #     # solv math problem to get cordinats in booksshelf, to find envelope
-    #     pass
-    # def level_8(self, last_challange):
-    #     # In envelope is USB, decrupt password to open usb
-    #     pass
-    # def level_9(self, last_challange):
-    #     # in usb run program and crash program to get [row, colmn] in bookshelf to find phone
-    #     pass
-    # def level_10(self, last_challange):
-    #     # passcode to phone is product of coordinats for usb and phone shelf
-    #     pass
-    # def level_11(self, last_challange):
-    #     # find map inside phone
-    #     pass
-    # def level_12(self, last_challange):
-    #     # find document in garden
-    #     pass
-    # def level_13(self, last_challange):
-    #     # Solv dokument with somehting that relefct all the previous challenges
-    #     pass
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("binary", "int", clue, level, "Answer: ")
+            if problem_solved:
+                return response
+
+    # ---------- Level 10: Mapst to sd card: 
+    def level_10(self, last_challange):
+    # Atbash Cipher find the codrinats for the map in the last column
+    # -> second map "emoji riddle" -> find sd card 
+        clue, level = "1", "level_10"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("webpage", "int", clue, level, "🕸️ + __ = ")
+            if problem_solved:
+                return response
+
+    # ---------- Level 11: Playfair Cipher: <riddle answer = webpage>
+    def level_11(self, last_challange):
+    # url 
+        clue, level = "1", "level_11"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("", "int", clue, level, "")
+            if response == "":
+                """Open the specified URL in the default web browser."""
+                url = "https://cicada-game.netlify.app/onrampofframp"
+                webbrowser.open(url)
+                return response
+
+    # ---------- Level 11: webpage: <onrampofframp>
+    def level_12(self, last_challange):
+    # 8bit binary
+        clue, level = "1", "level_11"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("", "int", clue, level, "")
+            if problem_solved:
+                return response
+
+    def level_13(self, last_challange):
+    # Transposition Cipher on usb name opens usb, 
+    # all files are in order by number one stands out,
+    # open that file and find riddle -> Size
+    # Order by size reveals message
+    # message runs math game
+    # crash math game and error message show Look under table
+
+        clue, level = "1", "level_9"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("size", "str", clue, level, "What am i: ")
+
+            # Transpotition sypher unlocks card - Filename hast riddle: 
+            # I'm something you can't grasp with your hand, yet I matter in every land. 
+            # I'm not measured in feet or miles, but I can cause many smiles. 
+            # I might be small or really wide, in dimensions, I like to hide.
+        clue, level = "1", "level_8"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("", "str", clue, level)
+        
+        # order by size shows message -> 
+        clue, level = "1", "level_9"    
+        problem_solved = False
+        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
+
+        while problem_solved == False:
+            problem_solved, response, clue = player_input("", "str", clue, level, "who am i: ")
+
 
 
     # ---------------

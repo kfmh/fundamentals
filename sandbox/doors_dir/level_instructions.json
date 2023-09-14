@@ -7,7 +7,7 @@
 	"level_2": {
 		"l1":"Last challange: ",
 		"l2":"Challenge 2: Steganographic\n",
-		"l3": "What is the sum of all four integers you found"
+		"l3": "What is the sum of all numbers"
 	},
 	"level_3": {
 		"l1":"Last challange: ",
@@ -20,13 +20,17 @@
 	},
 	"level_5": {
 		"l1":"Last challange: ",
-		"l2":"Challenge 5: "
+		"l2":"Challenge 5: Vigenère Cipher",
+		"l3P":"Key: button\nCyphertext: QUDAFUQKLJAYTSUAIBOXLZENKKYF"
 	},
 	"level_6": {
-		"l1":"Last challange: "
+		"l1":"Last challange: ",
+		"l2":"Challenge 6: Password",
+		"l3P":"[bold cyan]SEIC ETEFBCI VNNHOA ETN[/bold cyan]"
 	},
 	"level_7": {
-		"l1":"Last challange: "
+		"l1":"Last challange: ",
+		"l2":"Challenge 7: Transposition Cipher"
 	},
 	"level_8": {
 		"l1":"Last challange: "
