@@ -30,7 +30,9 @@
 	},
 	"level_7": {
 		"l1":"Last challange: ",
-		"l2":"Challenge 7: Transposition Cipher"
+		"l2":"Challenge 7: Decrypt",
+		"l3P":"[bold cyan][/bold cyan]",
+		"l4P":"[bold cyan]Key: VENTURE\nCyphertext: WYOWIUS\nCoordinates: 3,6,9,617,2,8,1[/bold cyan]",
 	},
 	"level_8": {
 		"l1":"Last challange: "
