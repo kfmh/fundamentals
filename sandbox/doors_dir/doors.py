@@ -132,8 +132,8 @@ class Cicada_13:
             
             manager.clear_screen()
 
-            # self.game_rules(next_game=next_game)
-            # manager.clear_screen()
+            self.game_rules(next_game=next_game)
+            manager.clear_screen()
             # last_challange = self.level_1()
             # manager.clear_screen()
             # last_challange = self.level_2(last_challange)
@@ -141,23 +141,24 @@ class Cicada_13:
             # last_challange = self.level_3(last_challange)
             # manager.clear_screen()
             # last_challange = self.level_4(last_challange)
-            manager.clear_screen()
-            last_challange = self.level_5("bookshelf")
-            manager.clear_screen()
-            last_challange = self.level_6(last_challange)
-            manager.clear_screen()
+            # manager.clear_screen()
+            # last_challange = self.level_5("bookshelf")
+            # manager.clear_screen()
+            # last_challange = self.level_6(last_challange)
+            # manager.clear_screen()
             # last_challange = self.level_7(last_challange)
             # manager.clear_screen()
             # last_challange = self.level_8(last_challange)
             # manager.clear_screen()
             # last_challange = self.level_9(last_challange)
             # manager.clear_screen()
-            # last_challange = self.level_10(last_challange)
-            # manager.clear_scre41jen()
-            # last_challange = self.level_11(last_challange)
-            # manager.clear_screen()
-            # last_challange = self.level_12(last_challange)
-            # self.level_13(last_challange)
+            last_challange = self.level_10("samuel morse")
+            manager.clear_screen()
+            last_challange = self.level_11(last_challange)
+            manager.clear_screen()
+            last_challange = self.level_12(last_challange)
+            manager.clear_screen()
+            self.level_13(last_challange)
             manager.clear_screen()
             # endscreen
             game_finished = False
@@ -332,7 +333,7 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("6", "int", clue, level, "Answer: ")
+            problem_solved, response, clue = player_input("6", "str", clue, level, "Answer: ")
             if problem_solved:
                 return response
         
@@ -344,7 +345,7 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("samuel morse", "int", clue, level, "Answer: ")
+            problem_solved, response, clue = player_input("samuel morse", "str", clue, level, "Answer: ")
             if problem_solved:
                 return response
 
@@ -358,7 +359,7 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("webpage", "int", clue, level, "🕸️ + __ = ")
+            problem_solved, response, clue = player_input("webpage", "str", clue, level, "🕸️ + __ = ")
             if problem_solved:
                 return response
 
@@ -371,22 +372,22 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("235164", "int", clue, level, "")
-            if response == "":
+            problem_solved, response, clue = player_input("goingtobasetwo", "str", clue, level, "")
+            if response == "goingtobasetwo":
                 """Open the specified URL in the default web browser."""
-                url = "https://cicada-game.netlify.app/goingtobasetwo"
+                url = "https://goingtobasetwo.netlify.app/"
                 webbrowser.open(url)
                 return response
 
     # ---------- Level 11: webpage: <onrampofframp>
     def level_12(self, last_challange):
     # 8bit binary
-        clue, level = "1", "level_11"    
+        clue, level = "1", "level_12"    
         problem_solved = False
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("", "int", clue, level, "")
+            problem_solved, response, clue = player_input("235164", "str", clue, level, "")
             if problem_solved:
                 return response
 
@@ -398,31 +399,12 @@ class Cicada_13:
     # message runs math game
     # crash math game and error message show Look under table
 
-        clue, level = "1", "level_9"    
+        clue, level = "1", "level_13"    
         problem_solved = False
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("size", "str", clue, level, "What am i: ")
-
-            # Transpotition sypher unlocks card - Filename hast riddle: 
-            # I'm something you can't grasp with your hand, yet I matter in every land. 
-            # I'm not measured in feet or miles, but I can cause many smiles. 
-            # I might be small or really wide, in dimensions, I like to hide.
-        clue, level = "1", "level_8"    
-        problem_solved = False
-        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
-
-        while problem_solved == False:
-            problem_solved, response, clue = player_input("", "str", clue, level)
-        
-        # order by size shows message -> 
-        clue, level = "1", "level_9"    
-        problem_solved = False
-        c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
-
-        while problem_solved == False:
-            problem_solved, response, clue = player_input("", "str", clue, level, "who am i: ")
+            problem_solved, response, clue = player_input("", "str", clue, level, "Final: ")
 
 
 
