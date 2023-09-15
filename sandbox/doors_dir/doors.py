@@ -298,7 +298,6 @@ class Cicada_13:
                 return response
             # Find Walky talkie -> alert leads to phone
 
-# ---------------------------------------------------------------- GOOD TEST
     # ---------- Level 6: Passcode <04>
     def level_6(self, last_challange):
         clue, level = "1", "level_6"    
@@ -306,24 +305,26 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("venture", "str", clue, level, "what am i: ")
+            problem_solved, response, clue = player_input("venture", "str", clue, level, "Answer: ")
             if problem_solved:
                 return response
             # railway cipher -> Passcode -> riddle -> key
         
-    # ---------- Level 7: Playfair Cipher <>
+    # ---------- Level 7: Vigenère Cipher 0.2 <bookword>
+    # R6C5B9P617C2L8W1
     def level_7(self, last_challange):
         clue, level = "1", "level_7"    
         problem_solved = False
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("", "str", clue, level, "Answer: ")
+            problem_solved, response, clue = player_input("math", "str", clue, level, "Answer: ")
             if problem_solved:
                 return response
             # sipher key -> cordinets -> bookword -> cipher key
 
-    # ---------- Level 8: Vigenère Cipher 0.2 <bookword>
+# ---------------------------------------------------------------- Map in book Djurens liv X
+    # ---------- Level 8: Playfair Cipher <>  
     def level_8(self, last_challange):
     # Leads to new book with map and key on back <Three!>
         clue, level = "1", "level_8"    
@@ -335,21 +336,22 @@ class Cicada_13:
             if problem_solved:
                 return response
         
-    # ---------- Level 9:  Cicar_cypher
+    # ---------- Level 9:  Cecar_cypher
     def level_9(self, last_challange):
-    # Cicar_cypher Row column book page line word <binary>
+    # Cecar_cypher Row column book page line word <binary>
         clue, level = "1", "level_9"    
         problem_solved = False
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("binary", "int", clue, level, "Answer: ")
+            problem_solved, response, clue = player_input("samuel morse", "int", clue, level, "Answer: ")
             if problem_solved:
                 return response
 
+# ---------------------------------------------------------------- Map in book Djurens liv X
     # ---------- Level 10: Mapst to sd card: 
     def level_10(self, last_challange):
-    # Atbash Cipher find the codrinats for the map in the last column
+    # Atbash Cipher find the codrinats to map in last column
     # -> second map "emoji riddle" -> find sd card 
         clue, level = "1", "level_10"    
         problem_solved = False
@@ -360,7 +362,8 @@ class Cicada_13:
             if problem_solved:
                 return response
 
-    # ---------- Level 11: Playfair Cipher: <riddle answer = webpage>
+# ---------------------------------------------------------------- GOOD TEST
+    # ---------- Level 11: 
     def level_11(self, last_challange):
     # url 
         clue, level = "1", "level_11"    
@@ -368,10 +371,10 @@ class Cicada_13:
         c_print(dictionary=level_instructions[level], loop=True, last=last_challange)
 
         while problem_solved == False:
-            problem_solved, response, clue = player_input("", "int", clue, level, "")
+            problem_solved, response, clue = player_input("235164", "int", clue, level, "")
             if response == "":
                 """Open the specified URL in the default web browser."""
-                url = "https://cicada-game.netlify.app/onrampofframp"
+                url = "https://cicada-game.netlify.app/goingtobasetwo"
                 webbrowser.open(url)
                 return response
 

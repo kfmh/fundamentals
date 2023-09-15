@@ -32,28 +32,36 @@
 		"l1":"Last challange: ",
 		"l2":"Challenge 7: Decrypt",
 		"l3P":"[bold cyan][/bold cyan]",
-		"l4P":"[bold cyan]Key: VENTURE\nCyphertext: WYOWIUS\nCoordinates: 3,6,9,617,2,8,1[/bold cyan]",
+		"l4P":"[bold cyan]Key: VENTURE\nCyphertext: WYOWIUS\nCoordinates: 6,5,9,617,2,8,1[/bold cyan]",
 	},
 	"level_8": {
-		"l1":"Last challange: "
+		"l1":"Last challange: ",
+		"l2":"Challenge 8: PlayFair Cipher",
+		"l3P":"[bold cyan]Cyphertext: MLERFEOPXLSYNKMY[/bold cyan]"
 	},
 	"level_9": {
-		"l1":"Last challange: "
-
+		"l1":"Last challange: ",
+		"l2":"Challenge 9: Cipher",
+		"l3P":"[bold cyan]Cyphertext: MUGOYF GILMY[/bold cyan]"
 	},
 	"level_10": {
-		"l1":"Last challange: "
-
+		"l1":"Last challange: ",
+		"l2":"Challenge 10: Atbash Cipher",
+		"l3P":"[bold cyan]Cyphertext: URMW XLLIWRMZGVH GL NZP RM OZHG XLOFNM[/bold cyan]"
 	},
 	"level_11": {
-		"l1":"Last challange: "
-
+		"l1":"Last challange: ",
+		"l2":"Challenge 10: Steganography"
+		
 	},
 	"level_12": {
-		"l1":"Last challange: "
+		"l1":"Last challange: ",
+		"l2":"Challenge 10: Transposition Cipher"
 	},
 	"level_13": {
-		"l1":"Last challange: "
+		"l1":"Last challange: ",
+		"l2":"Challenge 10: Steganography"
+		
 	}
 
 }
