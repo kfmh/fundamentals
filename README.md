@@ -1,7 +1,7 @@
 <h1 align="center">🍒<br>Learn the fundamentals right,<br>the rest is a cherry on top</h1>
 
 # Status
-- Developing POC, available 15/9 2023
+20/10 - POC
 
 
 ## Installation Mac/Linux
