@@ -1,40 +1,30 @@
+# Importing the necessary modules and classes
 import os
-from rich import print as p
 from rich.console import Console
-from rich import pretty
-pretty.install()
-from rich.traceback import install
-install()
-from .addition import RandomABIntUpdater
+from rich.panel import Panel
+from addition import Addision_game  
+from general_resource.fnds_functionality import ScreenManager
+from general_resource.menu import Game_menu
 
-updater = RandomABIntUpdater()
+# Initialize variables
+score = 0
+console = Console(force_terminal=True)
+addision_instance = Addision_game()  # Create an instanßce of the Addision_game class
+manager = ScreenManager()
+
+# Clear screen on start
+cs = manager.clear_screen()
+cs
 
 def main():
-    response = "run"
-    score = 0
-    console = Console()
-
-    while response != "q":
-        correct, a, b = updater.update()
-
-        os.system('clear')
-        console.print(f"score = [bold magenta]{score}[/bold magenta]\n")
-        console.print(f"What is the sum of\n\n[bold]{a} + {b} = ?[/bold]\n")
-        console.print("quit = [bold red]q[/bold red]\n")
-
-        response = input()
-        if response == "q":
-            os.system('clear')
-            console.print(f"Your score is [bold green]{score}[/bold green]")
-            break
-
-        if int(response) == correct:
-            os.system('clear')
-            console.print("[bold green]correct[/bold green]")
-            score += 1
-        else:
-            os.system('clear')
-            console.print("[bold red]try again[/bold red]")
+    # Game menu
+    select_game = Game_menu.select_game(console, Panel)
+    
+    if int(select_game) == 1:
+        addision_instance.game_loop(score=score, Panel=Panel, console=console)
+    # if int(select_game) == 2:
+    #     cicada_instance.game_loop() 
 
 if __name__ == "__main__":
     main()
+
