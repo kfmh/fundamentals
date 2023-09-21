@@ -23,7 +23,6 @@ def main():
     if int(select_game) == 1:
         addision_instance.game_loop(score=score, Panel=Panel, console=console)
     # if int(select_game) == 2:
-    #     cicada_instance.game_loop() 
 
 if __name__ == "__main__":
     main()

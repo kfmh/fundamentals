@@ -1,5 +1,12 @@
 import random
-from general_resource.fnds_functionality import Avg_TTA, AnswerTracker  # Importing the necessary modules and classes
+from general_resource.fnds_functionality import Avg_TTA, AnswerTracker, ScreenManager, User  # Importing the necessary modules and classes
+
+
+manager = ScreenManager()
+
+# Clear screen on start
+cs = manager.clear_screen()
+
 
 class Addision_game:
     """
@@ -44,12 +51,14 @@ class Addision_game:
         console.print(f"What is the sum of\n\n[bold cyan]{a} + {b} = ?[/bold cyan]")
         console.print("\nType [bold red]q[/bold red] to quit.")
     
-    def game_loop(self, score, Panel, clear_screen, console):
+    def game_loop(self, score, Panel, console, user):
         response = "run"
         timer = Avg_TTA()
         tracker = AnswerTracker()
+        user_data = User(user)
         while response != "q":
-            clear_screen()
+            manager.clear_screen()
+
             correct, a, b = self.update()
 
             self.display_question(console, score, a, b)
@@ -58,27 +67,24 @@ class Addision_game:
             response = input("> ")
 
             if response == "q":
-                clear_screen()
-                console.print(Panel(f"Your final score is [bold green]{score}[/bold green]", expand=False))
+                manager.clear_screen()
+                console.print(Panel(f"Your final score is [bold red]{score}[/bold red]", expand=False))
                 break
 
             try:
                 user_response = int(response)
+                elapsed_time = timer.stop()
                 if user_response == correct:
+                    correct_answer = 1
                     score += 1
                     tracker.add_correct()
-                    console.print("[bold green]Correct! Well done![/bold green]\n")
-                    timer.log_time(console)
+                    console.print("[bold red]Correct! Well done![/bold red]\n")
                 else:
+                    correct_answer = 0
                     tracker.add_wrong()
                     console.print(f"[bold red]Oops! That's incorrect. \n{a} + {b} = {correct}[/bold red]\n")
+                user_data.append_to_csv(elapsed_time, correct_answer)
                 
             except ValueError:
                 console.print("[bold yellow]Invalid input. Please enter a number or 'q' to quit.[/bold yellow]\n")
 
-            fraction = tracker.fraction_wrong_over_correct()
-            if fraction is not None:
-                print(f"Fraction of wrong answers over total answers: {fraction:.2f}")
-            else:
-                print("No correct answers recorded yet.")
-            print(input("Press enter"))

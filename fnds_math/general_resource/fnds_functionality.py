@@ -52,7 +52,7 @@ class AnswerTracker:
         """
         if self.correct_count == 0:
             return None
-        return self.wrong_count / (self.correct_count + self.wrong_count)
+        return self.wrong_count / (self.correct_count + self.wrong_count) 
 
 
 class ScreenManager:
