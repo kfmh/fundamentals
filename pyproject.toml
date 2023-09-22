@@ -17,5 +17,4 @@ dependencies = [
 fnds_math = "fnds_math.main:main"
 
 [options.packages.find]
-exclude =
-    ["sandbox"]
+exclude = ["sandbox"]
