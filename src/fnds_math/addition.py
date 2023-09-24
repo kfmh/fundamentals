@@ -1,6 +1,6 @@
 import random
-from general_resource.fnds_functionality import *  # Importing the necessary modules and classes
-
+from .general_resources.fnds_functionality import *  # Importing the necessary modules and classes
+from .general_resources.user_data.user import *
 
 manager = ScreenManager()
 gr = GameResponse()

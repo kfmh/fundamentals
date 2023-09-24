@@ -1,0 +1,2 @@
+[console_scripts]
+fnds_math = fnds_math.main:main

@@ -2,19 +2,22 @@
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[options]
+package_dir = {"" = "src"}
+packages = ["fnds_math"]
+
 [project]
 name = "fnds_math"
 version = "0.1.0"
 description = "Math game in shell"
 requires-python = ">=3.8"
 license = {file = "LICENSE"}
-urls = {source = "https://github.com/undrwolf/fundamentals_math_app"}
+urls = {source = "https://github.com/undrwolf/fundamentals"}
+
 dependencies = [
     "rich >= 13.5.2",
+    "pandas >= 2.1.0"
 ]
 
 [project.scripts]
 fnds_math = "fnds_math.main:main"
-
-[options.packages.find]
-exclude = ["sandbox"]

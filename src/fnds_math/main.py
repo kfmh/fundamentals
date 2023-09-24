@@ -1,9 +1,10 @@
 # Importing the necessary modules and classes
 from rich.console import Console
 from rich.panel import Panel
-from addition import Addision_game  
-from general_resource.fnds_functionality import *
-from general_resource.menu import Game_menu
+from .addition import Addision_game  
+from .general_resources.fnds_functionality import *
+from .general_resources.menu import Game_menu
+from .general_resources.user_data.user import *
 
 # Initialize variables
 score = 0
@@ -16,17 +17,21 @@ manager.clear_screen()
 
 def main():
     quit = False
+    user_name = False
     while quit != "quit":
-        # Select user
-        user_name = Game_menu.login()
-        user_data = User(user_name)
-        try:
-            score = user_data.score_count()
-        except IndexError:
-            score = 0
+        if user_name == False:
+            # Select user
+            user_name = Game_menu.login()
+            user_data = User(user_name)
+            try:
+                score = user_data.score_count()
+                new_player = False
+            except IndexError:
+                new_player = True
+                score = 0
     
         # Game menu
-        select_game = Game_menu.select_game()
+        select_game = Game_menu.select_game(user_name, new_player)
         quit = select_game
 
         if quit == "quit":

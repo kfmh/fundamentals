@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+src/fnds_math/__init__.py
+src/fnds_math/addition.py
+src/fnds_math/main.py
+src/fnds_math.egg-info/PKG-INFO
+src/fnds_math.egg-info/SOURCES.txt
+src/fnds_math.egg-info/dependency_links.txt
+src/fnds_math.egg-info/entry_points.txt
+src/fnds_math.egg-info/requires.txt
+src/fnds_math.egg-info/top_level.txt
+src/fnds_math/general_resources/fnds_functionality.py
+src/fnds_math/general_resources/menu.py
+src/fnds_math/general_resources/user_data/user.py
