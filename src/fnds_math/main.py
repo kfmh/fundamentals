@@ -6,6 +6,14 @@ from .general_resources.fnds_functionality import *
 from .general_resources.menu import Game_menu
 from .general_resources.user_data.user import *
 
+from tqdm import tqdm
+import time
+
+modules_to_load = ["Game_menu", "Addision_game", "User"]
+for module in tqdm(modules_to_load, desc="Loading Modules"):
+    # Load the module
+    time.sleep(1)  # Simulate loading delay
+
 # Initialize variables
 score = 0
 console = Console(force_terminal=True)
