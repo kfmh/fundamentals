@@ -30,4 +30,4 @@ class User:
         - Series: A pandas Series containing the counts of each unique value in the binary column.
         """
         # Using the value_counts() method on the specific column
-        return self.csv['correct'].value_counts()[1]
+        return self.csv['correct'].value_counts().iloc[1]
