@@ -29,3 +29,4 @@ Requires-Python: >=3.8
 License-File: LICENSE
 Requires-Dist: rich>=13.5.2
 Requires-Dist: pandas>=2.1.0
+Requires-Dist: tqdm>=2.2.3
