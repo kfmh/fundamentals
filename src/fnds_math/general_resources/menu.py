@@ -1,7 +1,7 @@
 from rich.console import Console
 from rich.panel import Panel
 from .fnds_functionality import *
-
+import os
 console = Console(force_terminal=True)
 gr = GameResponse()
 
@@ -18,7 +18,23 @@ class Game_menu:
 
 
     def login():
-        console.print("Type [bold red]Username: [/bold red]")
+        console.print("Type [bold red]Select user: [/bold red]")
+        
+        # Directory path where you want to search for CSV files
+        # directory_path = "/path/to/your/directory"
+        # Check if the CSV file exists
+        directory_path = os.path.dirname(os.path.abspath(__file__))
+
+        # Get a list of all files in the directory
+        file_list = os.listdir(f"{directory_path}/user_data")
+
+        # Filter the list to include only CSV files
+        csv_files = [file for file in file_list if file.endswith(".csv")]
+
+        # Print the list of CSV files
+        for csv_file in csv_files:
+            print(csv_file[0:-4])
+
         username = gr.game_response() 
         return username
         

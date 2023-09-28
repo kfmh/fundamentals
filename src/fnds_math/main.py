@@ -6,6 +6,18 @@ from .general_resources.fnds_functionality import *
 from .general_resources.menu import Game_menu
 from .general_resources.user_data.user import *
 
+# Todo ===== move this to a module 
+import argparse
+parser = argparse.ArgumentParser(description="Create new user")
+parser.add_argument("-n", "--name", type=str)
+args = parser.parse_args()
+if args.name:
+    user = User(args.name)
+    user.new_user()
+# Todo ===== move this to a module 
+
+
+# Todo ===== move this to a module 
 from tqdm import tqdm
 import time
 
@@ -13,6 +25,8 @@ modules_to_load = ["Game_menu", "Addision_game", "User"]
 for module in tqdm(modules_to_load, desc="Loading Modules"):
     # Load the module
     time.sleep(1)  # Simulate loading delay
+# Todo ===== move this to a module 
+
 
 # Initialize variables
 score = 0

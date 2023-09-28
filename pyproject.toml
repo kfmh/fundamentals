@@ -16,7 +16,8 @@ urls = {source = "https://github.com/undrwolf/fundamentals"}
 
 dependencies = [
     "rich >= 13.5.2",
-    "pandas >= 2.1.0"
+    "pandas >= 2.1.0",
+    "tqdm >= 2.2.3",
 ]
 
 [project.scripts]
