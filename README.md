@@ -1,8 +1,7 @@
 <h1 align="center">🍒<br>Learn the fundamentals right,<br>the rest is a cherry on top</h1>
 
 # Status
-20/10 - POC
-
+Project on hold, working on Undr Wolf Bildfold chess trainer 
 
 ## Installation Mac/Linux
 1. From terminal create a directory
